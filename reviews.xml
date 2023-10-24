@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<ArrayOfReview xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Review>
+    <Product>Grand Coffee</Product>
+    <Username>marko</Username>
+    <Title>Grand coffee recenzija</Title>
+    <Content>Lepa kafa</Content>
+    <Accepted>true</Accepted>
+    <Declined>false</Declined>
+    <Deleted>false</Deleted>
+    <Image>/Images/6bac1693-2231-4bc7-ae1d-3a47d6a6ba89.png</Image>
+  </Review>
+</ArrayOfReview>

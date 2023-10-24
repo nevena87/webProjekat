@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<ArrayOfProduct xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Product>
+    <Name>Aqua viva</Name>
+    <Price>69.99</Price>
+    <Quantity>1</Quantity>
+    <Description>Negazirana voda</Description>
+    <ProductPlacementDate>2023-07-02T17:33:19.5626855+02:00</ProductPlacementDate>
+    <City>Beograd</City>
+    <Deleted>false</Deleted>
+    <Status>Available</Status>
+    <Image>/Images/aquaViva.png</Image>
+  </Product>
+</ArrayOfProduct>

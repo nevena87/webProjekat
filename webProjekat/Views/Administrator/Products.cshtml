@@ -1,0 +1,152 @@
+﻿@using webProjekat.Models
+@model IEnumerable<Product>
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    form {
+        display: inline;
+    }
+
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+        padding: 6px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    h3 {
+        margin-bottom: 8px;
+    }
+
+    p {
+        margin-top: 16px;
+    }
+</style>
+
+<table border="1">
+    <tr>
+        <th colspan="10">Products</th>
+    </tr>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Description</th>
+        <th>Product placement date</th>
+        <th>City</th>
+        <th>Status</th>
+        <th>Image</th>
+        <th>Change</th>
+        <th>Delete</th>
+    </tr>
+
+    @foreach (var p in Model)
+    {
+        if (p.Deleted)
+        {
+            continue;
+        }
+        <tr>
+            <td>@p.Name</td>
+            <td>@p.Price</td>
+            <td>@p.Quantity</td>
+            <td>@p.Description</td>
+            <td>@p.ProductPlacementDate.ToString("yyyy-MM-dd HH:mm")</td>
+            <td>@p.City</td>
+            <td>@p.Status.ToString()</td>
+            <td>
+                @if (!string.IsNullOrEmpty(p.Image))
+                {
+                    <img src="@p.Image" alt="Product Image" width="100" />
+                }
+                else
+                {
+                    <span>No image available</span>
+                }
+            </td>
+            <td>
+                <form action="~/Administrator/ChangeProduct" method="post">
+                    <input type="text" name="name" hidden value="@p.Name" />
+                    <input type="submit" value="Change" />
+                </form>
+            </td>
+            <td>
+                <form action="~/Administrator/DeleteProduct" method="post">
+                    <input type="text" name="name" hidden value="@p.Name" />
+                    <input type="submit" value="Delete" />
+                </form>
+            </td>
+        </tr>
+    }
+</table>
+<br/>
+<h3>Sort</h3>
+<form action="~/Administrator/SortProducts">
+    <table>
+        <tr>
+            <td>By:</td>
+            <td>
+                <select name="by">
+                    <option value="Name">Name</option>
+                    <option value="Price">Price</option>
+                    <option value="ProductPlacementDate">Product placement date</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Type:</td>
+            <td>
+                <select name="type">
+                    <option value="Ascending">Ascending</option>
+                    <option value="Descending">Descending</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Sort" /></td>
+        </tr>
+    </table>
+</form>
+
+<h3>Filter</h3>
+<form action="~/Administrator/FilterProduct">
+    <table>
+        <tr>
+            <td>Status:</td>
+            <td>
+                <select name="status">
+                    <option value="Available">Available</option>
+                    <option value="Unavailable">Unavailable</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Filter" /></td>
+        </tr>
+    </table>
+</form>
+

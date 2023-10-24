@@ -1,0 +1,95 @@
+﻿@using webProjekat.Models
+@model IEnumerable<Review>
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    form {
+        display: inline;
+    }
+
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+        padding: 6px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    h3 {
+        margin-bottom: 8px;
+    }
+
+    p {
+        margin-top: 16px;
+    }
+</style>
+
+<table border="1">
+    <tr>
+        <th colspan="6">Reviews</th>
+    </tr>
+    <tr>
+        <th>Title</th>
+        <th>Content</th>
+        <th>User</th>
+        <th>Image</th>
+        <th colspan="2">Approve</th>
+    </tr>
+    @foreach(Review r in Model)
+     {
+        <tr>
+            <td>@r.Title</td>
+            <td>@r.Content</td>
+            <td>@r.Username</td>
+            <td>
+                @if (!string.IsNullOrEmpty(r.Image))
+                {
+                    <img src="@r.Image" alt="Product Image" width="100" />
+                }
+                else
+                {
+                    <span>No image available</span>
+                }
+            </td>
+            @if(!r.Declined && !r.Accepted)
+             {
+                <td>
+                    <form action="~/Administrator/Accept" method="post">
+                        <input type="text" name="r" value="@(r.Username+r.Product)" hidden/>
+                        <input type="submit" value="Yes"/>
+                    </form>
+                </td>
+                <td>
+                    <form action="~/Administrator/Decline" method="post">
+                        <input type="text" name="r" value="@(r.Username+r.Product)" hidden/>
+                        <input type="submit" value="No"/>
+                    </form>
+                </td>
+             }
+        </tr>
+     }
+</table>
+<p>@ViewBag.Message</p>

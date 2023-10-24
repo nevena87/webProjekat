@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<ArrayOfUser xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <User>
+    <Username>nina</Username>
+    <Password>nina</Password>
+    <FirstName>Nina</FirstName>
+    <LastName>Ninkovic</LastName>
+    <Gender>Female</Gender>
+    <Email>ninkovic.ninc@gmail.com</Email>
+    <Birthday>1999-03-17T00:00:00</Birthday>
+    <Role>Administrator</Role>
+    <Orders />
+    <FavoriteProducts />
+    <ReleasedProducts />
+    <Deleted>false</Deleted>
+  </User>
+  <User>
+    <Username>jovana</Username>
+    <Password>jovana</Password>
+    <FirstName>Jovana</FirstName>
+    <LastName>Jankovic</LastName>
+    <Gender>Female</Gender>
+    <Email>jankovic.jovana@gmail.com</Email>
+    <Birthday>1995-10-20T00:00:00</Birthday>
+    <Role>Seller</Role>
+    <Orders />
+    <FavoriteProducts />
+    <ReleasedProducts>
+      <string>Grand Coffee</string>
+    </ReleasedProducts>
+    <Deleted>false</Deleted>
+  </User>
+  <User>
+    <Username>marko</Username>
+    <Password>marko</Password>
+    <FirstName>Marko</FirstName>
+    <LastName>Markovic</LastName>
+    <Gender>Male</Gender>
+    <Email>markovic.marko@gmail.com</Email>
+    <Birthday>1999-11-23T00:00:00</Birthday>
+    <Role>Customer</Role>
+    <Orders>
+      <Order>
+        <Product>Grand Coffee</Product>
+        <Quantity>1</Quantity>
+        <Customer>marko</Customer>
+        <OrderDate>2023-07-04T20:50:03.004001+02:00</OrderDate>
+        <Status>Executed</Status>
+        <Deleted>false</Deleted>
+      </Order>
+    </Orders>
+    <FavoriteProducts>
+      <Product>
+        <Name>Aqua viva</Name>
+        <Price>69.99</Price>
+        <Quantity>1</Quantity>
+        <Description>Negazirana voda</Description>
+        <ProductPlacementDate>2023-07-02T17:33:19.5626855+02:00</ProductPlacementDate>
+        <City>Beograd</City>
+        <Reviews />
+        <Deleted>false</Deleted>
+        <Status>Available</Status>
+        <Image>/Images/aquaViva.png</Image>
+      </Product>
+    </FavoriteProducts>
+    <ReleasedProducts />
+    <Deleted>false</Deleted>
+  </User>
+  <User>
+    <Username>helena</Username>
+    <Password>helena</Password>
+    <FirstName>Helena123</FirstName>
+    <LastName>Henic</LastName>
+    <Gender>Female</Gender>
+    <Email>helena@gmail.com</Email>
+    <Birthday>2015-07-07T00:00:00</Birthday>
+    <Role>Seller</Role>
+    <Orders />
+    <FavoriteProducts />
+    <ReleasedProducts />
+    <Deleted>true</Deleted>
+  </User>
+  <User>
+    <Username>sanja</Username>
+    <Password>sanja</Password>
+    <FirstName>Sanja123</FirstName>
+    <LastName>Savic123</LastName>
+    <Gender>Male</Gender>
+    <Email>savic@gmail.com</Email>
+    <Birthday>2016-07-13T00:00:00</Birthday>
+    <Role>Customer</Role>
+    <Orders />
+    <FavoriteProducts />
+    <ReleasedProducts />
+    <Deleted>true</Deleted>
+  </User>
+  <User>
+    <Username>jelena</Username>
+    <Password>jelena</Password>
+    <FirstName>Jelena</FirstName>
+    <LastName>Jelenic</LastName>
+    <Gender>Female</Gender>
+    <Email>jelenic.jelena@gmail.com</Email>
+    <Birthday>1996-02-12T00:00:00</Birthday>
+    <Role>Seller</Role>
+    <Orders />
+    <FavoriteProducts />
+    <ReleasedProducts>
+      <string>Aqua viva</string>
+      <string>Kinder Bueno</string>
+    </ReleasedProducts>
+    <Deleted>false</Deleted>
+  </User>
+  <User>
+    <Username>nevena</Username>
+    <Password>nevena</Password>
+    <FirstName>Nevena</FirstName>
+    <LastName>Culibrk</LastName>
+    <Gender>Female</Gender>
+    <Email>culibrk.nevena@gmail.com</Email>
+    <Birthday>2001-04-12T00:00:00</Birthday>
+    <Role>Administrator</Role>
+    <Orders />
+    <FavoriteProducts />
+    <ReleasedProducts />
+    <Deleted>false</Deleted>
+  </User>
+  <User>
+    <Username>milan</Username>
+    <Password>milan</Password>
+    <FirstName>Milan</FirstName>
+    <LastName>Milanovic</LastName>
+    <Gender>Male</Gender>
+    <Email>milanovic.milan@gmail.com</Email>
+    <Birthday>1995-12-16T00:00:00</Birthday>
+    <Role>Customer</Role>
+    <Orders>
+      <Order>
+        <Product>Aqua viva</Product>
+        <Quantity>1</Quantity>
+        <Customer>milan</Customer>
+        <OrderDate>2023-07-05T11:05:04.5725723+02:00</OrderDate>
+        <Status>Executed</Status>
+        <Deleted>false</Deleted>
+      </Order>
+      <Order>
+        <Product>Grand Coffee</Product>
+        <Quantity>1</Quantity>
+        <Customer>milan</Customer>
+        <OrderDate>2023-07-05T11:06:15.1243857+02:00</OrderDate>
+        <Status>Executed</Status>
+        <Deleted>false</Deleted>
+      </Order>
+    </Orders>
+    <FavoriteProducts>
+      <Product>
+        <Name>Aqua viva</Name>
+        <Price>69.99</Price>
+        <Quantity>1</Quantity>
+        <Description>Negazirana voda</Description>
+        <ProductPlacementDate>2023-07-02T17:33:19.5626855+02:00</ProductPlacementDate>
+        <City>Beograd</City>
+        <Deleted>false</Deleted>
+        <Status>Available</Status>
+        <Image>/Images/aquaViva.png</Image>
+      </Product>
+    </FavoriteProducts>
+    <ReleasedProducts />
+    <Deleted>false</Deleted>
+  </User>
+</ArrayOfUser>

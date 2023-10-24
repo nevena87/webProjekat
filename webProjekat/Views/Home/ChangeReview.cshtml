@@ -1,0 +1,72 @@
+﻿@using webProjekat.Models
+@model Review
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    form {
+        display: inline;
+    }
+
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+        padding: 6px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    h3 {
+        margin-bottom: 8px;
+    }
+
+    p {
+        margin-top: 16px;
+    }
+</style>
+
+<form action="~/Home/ChangeReviewRequest" method="post" enctype="multipart/form-data">
+    <table>
+        <tr>
+            <td>Title:</td>
+            <td><input type="text" name="title" value="@Model.Title" /></td>
+        </tr>
+        <tr>
+            <td>Content:</td>
+            <td><input type="text" name="content" value="@Model.Content" /></td>
+        </tr>
+        <tr>
+            <td>Image:</td>
+            <td>
+                <input type="file" name="imagePath" value="@Model.Image" />
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Change review" /></td>
+        </tr>
+    </table>
+</form>
+<p>@ViewBag.ErrorMessage</p>
+

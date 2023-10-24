@@ -1,0 +1,105 @@
+﻿@using webProjekat.Models
+@model Product
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    form {
+        display: inline;
+    }
+
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+        padding: 6px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    h3 {
+        margin-bottom: 8px;
+    }
+
+    p {
+        margin-top: 16px;
+    }
+</style>
+
+<form action="~/Seller/ChangeProductRequest" method="post" enctype="multipart/form-data">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" name="name" readonly value="@Model.Name" /></td>
+        </tr>
+        <tr>
+            <td>Price:</td>
+            <td><input type="number" name="price" step="0.01" value="@Model.Price" /></td>
+        </tr>
+        <tr>
+            <td>Quantity:</td>
+            <td><input type="number" name="quantity" value="@Model.Quantity" /></td>
+        </tr>
+        <tr>
+            <td>Description:</td>
+            <td><input type="text" name="description" value="@Model.Description" /></td>
+        </tr>
+        <tr>
+            <td>Product placement date:</td>
+            <td><input type="datetime-local" name="productPlacementDate" value="@Model.ProductPlacementDate.ToString("yyyy-MM-dd HH:mm")" /></td>
+        </tr>
+        <tr>
+            <td>City:</td>
+            <td><input type="text" name="city" value="@Model.City" /></td>
+        </tr>
+        <tr>
+            <td>Status:</td>
+            <td>
+                <select name="status">
+                    @if (Model.Status == StatusAUn.Available)
+                    {
+                        <option selected value="Available">Available</option>
+                        <option value="Unavailable">Unavailable</option>
+                    }
+                    else
+                    {
+                        <option value="Available">Available</option>
+                        <option selected value="Unavailable">Unavailable</option>
+                    }
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Image:</td>
+            <td>
+                <input type="file" name="imagePath" value="@Model.Image" />
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Change" /></td>
+        </tr>
+    </table>
+</form>
+<p>@ViewBag.ErrorMessage</p>
+

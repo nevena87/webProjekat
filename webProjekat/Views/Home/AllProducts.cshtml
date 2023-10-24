@@ -1,0 +1,231 @@
+﻿@using webProjekat.Models;
+@model IEnumerable<Product>
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    form {
+        display: inline;
+    }
+
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+        padding: 6px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    h3 {
+        margin-bottom: 8px;
+    }
+
+    p {
+        margin-top: 16px;
+    }
+</style>
+
+<table border="1">
+    <tr>
+        <th colspan="8">Products</th>
+    </tr>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Product placement date</th>
+        <th>City</th>
+        <th>Image</th>
+        @if (Session["user"] != null && ((User)Session["user"]).Role == Role.Customer)
+         {
+            <th>Favorite</th>
+            <th>Order</th>
+         }
+
+    </tr>
+    @foreach (var item in Model)
+     {
+        if (item.Deleted)
+        {
+            continue;
+        }
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Price</td>
+            <td>@item.Quantity</td>
+            <td>@item.ProductPlacementDate.ToString("yyyy-MM-dd HH:mm")</td>
+            <td>@item.City</td>
+            <td>
+                @if (!string.IsNullOrEmpty(item.Image))
+                {
+                    <img src="@item.Image" alt="Product Image" width="100" />
+                }
+                else
+                {
+                    <span>No image available</span>
+                }
+            </td>
+            @if (Session["user"] != null && ((User)Session["user"]).Role == Role.Customer)
+            {
+                <td>
+                    <form action="~/Home/AddToFavorites" method="post">
+                        <input type="hidden" name="name" value="@item.Name" />
+                        <input type="submit" value="Add to favorites" />
+                    </form>
+                </td>
+                <td>
+                    <form action="~/Home/OrderProduct" method="post">
+                        <input type="hidden" name="name" value="@item.Name" />
+                        <input type="submit" value="Order the product" />
+                    </form>
+                </td>
+            }
+        </tr>
+     }
+</table>
+<p>@ViewBag.Message</p>
+
+<table>
+    <tr>
+        <td>
+            <h3>Search</h3>
+            <form action="~/Home/SearchProducts">
+                <table>
+                    <tr>
+                        <td>Name:</td>
+                        <td><input type="text" name="name" /></td>
+                    </tr>
+                    <tr>
+                        <td>Price from:</td>
+                        <td><input type="number" name="priceFrom" /></td>
+                        <td>Price to:</td>
+                        <td><input type="number" name="priceTo" /></td>
+                    </tr>
+                    <tr>
+                        <td>City:</td>
+                        <td><input type="text" name="city" /></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Search" /></td>
+                    </tr>
+                </table>
+            </form>
+        </td>
+        <td>
+
+
+
+        </td>
+        <td>
+            <h3>Sort</h3>
+            <form action="~/Home/SortProducts" method="post">
+                <table>
+                    <tr>
+                        <td>By:</td>
+                        <td>
+                            <select name="by">
+                                <option value="Name">Name</option>
+                                <option value="Price">Price</option>
+                                <option value="ProductPlacementDate">Product placement date</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Type:</td>
+                        <td>
+                            <select name="type">
+                                <option value="Ascending">Ascending</option>
+                                <option value="Descending">Descending</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Sort" /></td>
+                    </tr>
+                </table>
+            </form>
+        </td>
+    </tr>
+</table>
+
+
+<br/>
+<table border="1">
+    <tr>
+        <th colspan="7">Reviews</th>
+    </tr>
+    <tr>
+        <th>Title</th>
+        <th>Content</th>
+        <th>User</th>
+        <th>Image</th>
+        @if (Session["user"] != null && ((User)Session["user"]).Role == Role.Customer)
+         {
+            <th>Change</th>
+            <th>Delete</th>
+         }
+
+    </tr>
+    @foreach (Review r in AllData.RetrieveAllReviews())
+    {
+        if((!r.Declined && !r.Accepted) || (r.Declined && !r.Accepted))
+        {
+            continue;
+        }
+        <tr>
+            <td>@r.Title</td>
+            <td>@r.Content</td>
+            <td>@r.Username</td>
+            <td>
+                @if (!string.IsNullOrEmpty(r.Image))
+                {
+                    <img src="@r.Image" alt="Product Image" width="100" />
+                }
+                else
+                {
+                    <span>No image available</span>
+                }
+            </td>
+            @if (Session["user"] != null && ((User)Session["user"]).Role == Role.Customer)
+            {
+                <td>
+                    <form action="~/Home/ChangeReview">
+                        <input type="hidden" name="title" value="@r.Title" />
+                        <input type="submit" value="Change" />
+                    </form>
+                </td>
+                <td>
+                    <form action="~/Home/DeleteReview">
+                        <input type="hidden" name="title" value="@r.Title" />
+                        <input type="submit" value="Delete" />
+                    </form>
+                </td>
+            }
+        </tr>
+    }
+</table>
+
+
+
